@@ -1,0 +1,9 @@
+.sector-select {
+    height: 500px;
+    width: 500px;
+}
+
+.form-border {
+    border: 3px solid gainsboro;
+    padding: 1em;
+}

@@ -1,0 +1,29 @@
+<div class="container mt-3">
+    <div class="container" *ngIf="!isReady">
+        <h1>Loading...</h1>
+    </div>
+    <div class="form-border" *ngIf="isReady">
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" minlength="1" class="form-control" id="name" [(ngModel)]="this.formSubmission.name"/>
+        </div>
+        <div class="form-group">
+            <label for="sectors">Please select sectors you're currently involved in:</label>
+            <select multiple class="sector-select form-control" id="sectors" [(ngModel)]="this.formSubmission.selectedSectorIds" size="80">
+                <option *ngFor="let sector of sectorList"
+                        [style]="getIndentStyle(sector.level)"
+                        [value]="sector.id">
+                    {{sector.name}}</option>
+            </select>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="termsCheck" [(ngModel)]="termsChecked">
+            <label class="form-check-label" for="termsCheck">I agree to terms and conditions.</label>
+        </div>
+        <div class="container">
+            <alert [type]="'danger'" *ngFor="let alert of alerts">{{alert}}</alert>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+    </div>
+</div>
+
